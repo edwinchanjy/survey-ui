@@ -1,0 +1,22 @@
+{
+  "title": "丰田评价系统",
+  "auth": {
+    "email": "电子邮件",
+    "password": "密码",
+    "signIn": "登录",
+    "rememberMe": "记得我",
+    "forgotPassword": "忘记账号密码？",
+    "signUp": {
+      "text1": "还没有账号？",
+      "text2": "立即注冊"
+    }
+  },
+  "errors": {
+    "emailRequired": "请输入电子邮件",
+    "emailInvalid": "电子邮件错误",
+    "passwordRequired": "请输入密码",
+    "passwordMinLength": "请输入至少6个字符"
+  },
+  "save": "保存",
+  "clear": "清除"
+}
