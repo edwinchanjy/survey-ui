@@ -1,14 +1,38 @@
 declare module "vue-signature-pad" {
-  import { default as _Vue } from "vue";
+  import {
+    ComponentPublicInstance,
+    ComponentOptions,
+    ComputedOptions,
+    Plugin,
+    MethodOptions,
+  } from "vue";
 
-  export interface VueSignaturePad extends _Vue {
-    width: string;
-    height: string;
-    saveType: string;
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    options: Record<string, any>;
-    images: [];
-    customStyle: CSSStyleDeclaration;
+  type ComponentConstructor<
+    Component extends ComponentPublicInstance<
+      Props,
+      RawBindings,
+      D,
+      C,
+      M
+    > = ComponentPublicInstance<any>,
+    Props = any,
+    RawBindings = any,
+    D = any,
+    C extends ComputedOptions = ComputedOptions,
+    M extends MethodOptions = MethodOptions,
+  > = { new (): Component } & ComponentOptions<Props, RawBindings, D, C, M>;
+
+  export interface VueSignaturePadProps {
+    width?: string;
+    height?: string;
+    saveType?: string;
+    options?: Record<string, any>;
+    images?: [];
+    customStyle?: CSSStyleDeclaration;
+  }
+
+  export interface VueSignaturePad
+    extends ComponentPublicInstance<VueSignaturePadProps> {
     saveSignature():
       | { isEmpty: true; data: undefined }
       | { isEmpty: false; data: string };
@@ -26,8 +50,9 @@ declare module "vue-signature-pad" {
     toData(): string;
   }
 
-  export function VueSignaturePad(Vue: typeof _Vue): void;
-  export default VueSignaturePad;
+  export const VueSignaturePad: ComponentConstructor<VueSignaturePad>;
+  const plugin: Plugin;
+  export default plugin;
 }
 
 declare module "vee-validate*";

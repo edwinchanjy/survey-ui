@@ -6,7 +6,6 @@
 
 <script lang="ts" setup>
 import "survey-core/defaultV2.min.css";
-import { StylesManager } from "survey-core";
 import { Survey } from "survey-knockout-ui";
 import { Question } from "data/interfaces/survey";
 
@@ -14,9 +13,7 @@ const props = defineProps<{
   questions: Array<Question>;
 }>();
 
-StylesManager.applyTheme("defaultV2");
-
-// const surveyJson = { elements: props.questions };
+const surveyJson = { elements: props.questions };
 
 const json = {
   completedHtmlOnCondition: [
@@ -237,7 +234,6 @@ const json = {
 onMounted(() => {
   const survey = new Survey(json);
   survey.render("survey");
-
   survey.onUploadFiles.add((_, options) => {
     let formData = new FormData();
     options.files.forEach((file) => {

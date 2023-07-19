@@ -18,8 +18,10 @@
 
 <script>
 // Doesn't work with setup tag. So leave it like this.
-import { VueSignaturePad } from "vue-signature-pad";
+import pkg from "vue-signature-pad";
+const { VueSignaturePad } = pkg;
 
+// console.log(pkg);
 export default defineComponent({
   name: "MySignaturePad",
   components: { VueSignaturePad },

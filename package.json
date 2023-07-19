@@ -24,7 +24,7 @@
     "eslint": "^8.45.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-prettier": "^5.0.0",
-    "nuxt": "^3.6.3",
+    "nuxt": "^3.6.4",
     "nuxt-icon": "^0.4.2",
     "prettier": "^3.0.0",
     "typescript": "^5.1.6"
@@ -34,12 +34,13 @@
     "@vuelidate/core": "^2.0.3",
     "@vuelidate/validators": "^2.0.3",
     "sass": "^1.63.6",
+    "survey-core": "^1.9.98",
     "survey-knockout-ui": "^1.9.98",
     "vee-validate": "^4.10.7",
     "vue-signature-pad": "^3.0.2",
     "vue-sweetalert2": "^5.0.5"
   },
   "engines": {
-    "node": ">=18.0.0 <19.0.0"
+    "node": ">=16.0.0 <17.0.0"
   }
 }

@@ -14,7 +14,6 @@ export const useAuthStore = defineStore("auth", () => {
   }
 
   function logout() {
-    console.log("gg");
     isLoggedIn.value = false;
 
     useCookie(cookiesKey.userTokenKey).value = null;
