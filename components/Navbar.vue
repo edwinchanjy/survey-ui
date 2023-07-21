@@ -62,31 +62,10 @@
         >
           <li>
             <a
-              href="#"
+              :href="localePath('/')"
               class="block py-2 pl-3 pr-4 text-gray-900 bg-blue-700 rounded md:bg-transparent md:hover:text-primary md:p-0"
               aria-current="page"
-              >Home</a
-            >
-          </li>
-          <li>
-            <a
-              href="#"
-              class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-primary md:p-0"
-              >About</a
-            >
-          </li>
-          <li>
-            <a
-              href="#"
-              class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-primary md:p-0"
-              >Services</a
-            >
-          </li>
-          <li>
-            <a
-              href="#"
-              class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-primary md:p-0"
-              >Contact</a
+              >surveyJS</a
             >
           </li>
         </ul>
@@ -99,6 +78,8 @@
 import { useAuthStore } from "~~/stores/auth";
 
 const authStore = useAuthStore();
+
+const localePath = useLocalePath();
 
 // const { $swal } = useNuxtApp();
 
