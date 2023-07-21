@@ -21,7 +21,6 @@
 import pkg from "vue-signature-pad";
 const { VueSignaturePad } = pkg;
 
-// console.log(pkg);
 export default defineComponent({
   name: "MySignaturePad",
   components: { VueSignaturePad },

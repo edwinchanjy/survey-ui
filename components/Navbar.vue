@@ -84,7 +84,6 @@ const localePath = useLocalePath();
 // const { $swal } = useNuxtApp();
 
 function logout() {
-  console.log("brother");
   authStore.logout();
 }
 </script>

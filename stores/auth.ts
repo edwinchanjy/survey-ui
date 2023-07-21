@@ -31,9 +31,6 @@ export const useAuthStore = defineStore("auth", () => {
     });
     userTokenCookie.value = "EXAMPLE_TOKEN";
 
-    console.log("AUTH TOKEN");
-    console.log(userTokenCookie.value);
-
     let refreshTokenCookie = useCookie(cookiesKey.refreshTokenKey, {
       sameSite: "none",
       secure: true,
