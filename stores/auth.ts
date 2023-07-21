@@ -3,6 +3,8 @@ import { LoginForm } from "data/interfaces/auth";
 import { constant, cookiesKey } from "~~/constants";
 
 export const useAuthStore = defineStore("auth", () => {
+  const localePath = useLocalePath();
+
   const isLoggedIn = ref(false);
   const userName: Ref<string | null | undefined> = ref("");
 
@@ -18,8 +20,7 @@ export const useAuthStore = defineStore("auth", () => {
 
     useCookie(cookiesKey.userTokenKey).value = null;
     useCookie(cookiesKey.refreshTokenKey).value = null;
-    console.log("LOGOUT");
-    navigateTo("/login");
+    navigateTo(localePath("/login"));
   }
 
   function saveAuthCookies() {

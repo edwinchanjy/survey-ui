@@ -68,7 +68,6 @@
             {{ t("auth.signIn") }}
           </button>
         </div>
-        <v-divider />
         <div class="text-center text-xs font">
           <span class="text-slate-300 mr-1">{{ t("auth.signUp.text1") }}</span>
           <a href="#" class="text-blue-500 hover:underline">{{

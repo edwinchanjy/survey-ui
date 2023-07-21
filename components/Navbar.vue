@@ -46,7 +46,7 @@
             {{ authStore.userName }}
           </span>
           <button
-            @submit.prevent="logout"
+            @click.prevent="logout"
             class="cursor-pointer outline-none text-center md:hover:text-primary"
           >
             <Icon name="material-symbols:logout-rounded" size="24px" />
@@ -84,21 +84,7 @@ const localePath = useLocalePath();
 // const { $swal } = useNuxtApp();
 
 function logout() {
-  console.log("adsfasdf");
+  console.log("brother");
   authStore.logout();
-
-  // $swal.fire({
-  //     title: "Logout?",
-  //     text: `logout lololol`,
-  //     icon: "warning",
-  //     showCancelButton: true,
-  //     confirmButtonText: "Yes",
-  //     cancelButtonText: "No",
-  //   })
-  //   .then(async (result) => {
-  //     if (result.value) {
-  //       authStore.logout();
-  //     }
-  //   });
 }
 </script>
