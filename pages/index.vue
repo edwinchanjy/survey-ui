@@ -1,12 +1,14 @@
 <template>
-  <div class="min-h-screen pt-24">
-    <!-- <SurveyStepper :steps="steps" :current-step="1" /> -->
+  <div class="min-h-screen">
+    <SurveyCustomStepper :current-step="2" :questions="questions" />
     <SurveyPage :questions="questions" />
   </div>
 </template>
 
 <script lang="ts" setup>
-const steps = ["Survey Page 1", "Survey Page 2", "Survey Page 3", "Review"];
+definePageMeta({
+  layout: "default",
+});
 
 const questions = {
   completedHtmlOnCondition: [
@@ -37,11 +39,12 @@ const questions = {
   ],
   pages: [
     {
-      name: "page1",
+      name: "Page 1",
       elements: [
         {
           type: "panel",
           name: "nps-panel",
+          id: "panel-id-1",
           elements: [
             {
               type: "rating",
@@ -217,7 +220,7 @@ const questions = {
           name: "files",
           storeDataAsText: false,
           waitForUpload: true,
-          allowMultiple: false,
+          allowMultiple: true,
           maxSize: 102400,
           hideNumber: true,
         },
@@ -229,13 +232,21 @@ const questions = {
         },
       ],
     },
+    {
+      name: "This is Page 2",
+      elements: [
+        {
+          type: "radiogroup",
+          name: "question4",
+          choices: ["item1", "item2", "item3"],
+        },
+      ],
+    },
   ],
   showPrevButton: true,
   showQuestionNumbers: "off",
-  completeText: {
-    fr: "Envoyer",
-  },
-  questionsOnPageMode: "questionPerPage",
+  // questionsOnPageMode: "questionPerPage",
+  showProgressBar: "bottom",
   widthMode: "static",
   width: "1000px",
 };

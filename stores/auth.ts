@@ -1,51 +1,80 @@
 import { defineStore } from "pinia";
-import { LoginForm } from "data/interfaces/auth";
-import { constant, cookiesKey } from "~~/constants";
+import sha256 from "crypto-js/sha256";
+import {
+  GetUserRequest,
+  LoginForm,
+  UserLoginRequest,
+  UserLoginResponse,
+} from "data/interfaces/auth";
+import { auth } from "~~/repositories";
 
 export const useAuthStore = defineStore("auth", () => {
   const localePath = useLocalePath();
+  const dayjs = useDayjs();
 
   const isLoggedIn = ref(false);
+  const userData: Ref<UserLoginResponse | null | undefined> = ref();
   const userName: Ref<string | null | undefined> = ref("");
 
-  function login(data: LoginForm) {
-    isLoggedIn.value = true;
-    userName.value = data.email;
+  async function login(loginInfo: LoginForm) {
+    const passwordHash: string = sha256(loginInfo.password).toString();
 
-    saveAuthCookies();
+    const request: UserLoginRequest = {
+      timestamp: dayjs.utc().format(),
+      request: {
+        username: loginInfo.username,
+        password: passwordHash,
+      },
+    };
+
+    const data = await auth.login(request);
+
+    if (data) {
+      userData.value = data;
+      userName.value = data.data.username;
+      isLoggedIn.value = true;
+
+      setUserToken(userData.value.data.token);
+
+      if (loginInfo.rememberMe) {
+        setRememberMe(loginInfo.username);
+      } else {
+        removeRememberMe();
+      }
+
+      navigateTo(localePath("/"));
+    }
   }
 
   function logout() {
     isLoggedIn.value = false;
+    userData.value = null;
 
-    useCookie(cookiesKey.userTokenKey).value = null;
-    useCookie(cookiesKey.refreshTokenKey).value = null;
+    removeUserToken();
+    removeSurvey();
+
     navigateTo(localePath("/login"));
   }
 
-  function saveAuthCookies() {
-    let userTokenCookie = useCookie(cookiesKey.userTokenKey, {
-      sameSite: "none",
-      secure: true,
-      maxAge: constant.tokenAge,
-    });
-    userTokenCookie.value = "EXAMPLE_TOKEN";
+  async function getUser(id: string) {
+    const request: GetUserRequest = {
+      id: id,
+    };
 
-    let refreshTokenCookie = useCookie(cookiesKey.refreshTokenKey, {
-      sameSite: "none",
-      secure: true,
-      maxAge: constant.tokenAge,
-    });
+    const data = await auth.getUser(request);
 
-    refreshTokenCookie.value = "EXAMPLE_TOKEN";
-
-    navigateTo("/");
+    if (data) {
+      isLoggedIn.value = true;
+      userName.value = data.data.Username;
+    }
   }
 
   return {
     isLoggedIn,
+    userData,
     userName,
     login,
     logout,
+    getUser,
   };
 });

@@ -1,29 +1,22 @@
-import { cookiesKey } from "~~/constants";
 import { useAuthStore } from "~~/stores/auth";
 
-export default defineNuxtRouteMiddleware((from) => {
+export default defineNuxtRouteMiddleware(async (to) => {
   const authStore = useAuthStore();
   const localePath = useLocalePath();
 
-  const userTokenCookie = useCookie(cookiesKey.userTokenKey).value;
+  // const userTokenCookie = getUserToken();
 
-  // console.log("TOKEN");
-  // console.log(userTokenCookie);
   // if (userTokenCookie) {
   //   authStore.isLoggedIn = true;
   // }
 
-  authStore.userName = "John Doe";
-  authStore.isLoggedIn = true;
+  // if (!authStore.userName && authStore.isLoggedIn) {
+  //   await authStore.getUser("4");
+  // }
 
-  // console.log("checking");
-  // console.log(authStore.isLoggedIn);
-  // if (!authStore.isLoggedIn && from.path.includes("/login")) {
+  // if (!authStore.isLoggedIn && !to.path.includes("/login"))
   //   return navigateTo(localePath("/login"));
-  // }
 
-  // if (authStore.isLoggedIn && from.path.includes("/login")) {
-  //   console.log("testing");
+  // if (authStore.isLoggedIn && to.path.includes("/login"))
   //   return navigateTo(localePath("/"));
-  // }
 });

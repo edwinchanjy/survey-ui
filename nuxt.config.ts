@@ -9,6 +9,7 @@ export default defineNuxtConfig({
     "@nuxtjs/i18n",
     "@tailvue/nuxt",
     "nuxt-icon",
+    "dayjs-nuxt",
   ],
   i18n: {
     locales: [
@@ -26,5 +27,10 @@ export default defineNuxtConfig({
     lazy: true,
     langDir: "locales",
     defaultLocale: "en",
+  },
+  runtimeConfig: {
+    public: {
+      apiUrl: process.env.API_URL,
+    },
   },
 });

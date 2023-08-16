@@ -9,17 +9,17 @@
         </h5>
         <div>
           <label
-            for="email"
+            for="username"
             class="block mb-2 text-sm font-medium text-white"
-            >{{ t("auth.email") }}</label
+            >{{ t("auth.username") }}</label
           >
           <input
-            id="email"
-            v-model="email"
-            type="email"
-            name="email"
+            id="username"
+            v-model="username"
+            type="text"
+            name="text"
             class="bg-gray-600 border border-gray-500 text-white placeholder-gray-400 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-            placeholder="name@company.com"
+            placeholder="Username"
             required
           />
         </div>
@@ -44,21 +44,18 @@
           <div class="flex items-start">
             <div class="flex items-center h-5">
               <input
-                id="remember"
+                id="rememberMe"
+                v-model="rememberMe"
                 type="checkbox"
-                value=""
                 class="w-4 h-4 accent-primary border border-gray-600 rounded bg-gray-700 focus:ring-3 focus:ring-primary ring-offset-gray-800 ocus:ring-offset-gray-800"
               />
             </div>
             <label
-              for="remember"
+              for="rememberMe"
               class="ml-2 text-sm font-medium text-gray-300"
               >{{ t("auth.rememberMe") }}</label
             >
           </div>
-          <a href="#" class="ml-auto text-sm text-blue-500 hover:underline">{{
-            t("auth.forgotPassword")
-          }}</a>
         </div>
         <div class="flex justify-center">
           <button
@@ -68,43 +65,31 @@
             {{ t("auth.signIn") }}
           </button>
         </div>
-        <div class="text-center text-xs font">
-          <span class="text-slate-300 mr-1">{{ t("auth.signUp.text1") }}</span>
-          <a href="#" class="text-blue-500 hover:underline">{{
-            t("auth.signUp.text2")
-          }}</a>
-        </div>
+        <p>{{ test }}</p>
+        <p>{{ test2 }}</p>
       </form>
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { Form, useForm, useField } from "vee-validate";
+import { useForm, useField } from "vee-validate";
 import { useAuthStore } from "~~/stores/auth";
 import { regex } from "~~/constants";
 import { LoginForm } from "~~/data/interfaces/auth";
+
+const { t } = useI18n();
 
 definePageMeta({
   layout: "auth",
 });
 
-useSeoMeta({
-  title: "Toyota Evaluation System | Login",
-  ogTitle: "Toyota Evaluation System | Login",
-});
-
-const { t } = useI18n();
-
 const authStore = useAuthStore();
 
 const loginSchema = {
-  email(value: string | null) {
+  username(value: string | null) {
     if (!value) {
-      return t("errors.emailRequired");
-    }
-    if (!value.match(regex.emailRegex)) {
-      return t("errors.emailInvalid");
+      return t("errors.usernameRequired");
     }
     return true;
   },
@@ -117,20 +102,40 @@ const loginSchema = {
     }
     return true;
   },
+  rememberMe() {
+    return true;
+  },
 };
 
-const { errors, handleSubmit } = useForm({
+const { handleSubmit } = useForm({
   validationSchema: loginSchema,
   initialValues: {
-    email: "",
+    username: getRememberMe() ?? "",
     password: "",
+    rememberMe: !!getRememberMe(),
   },
 });
 
-const { value: email } = useField("email", loginSchema.email);
+const { value: username } = useField("username", loginSchema.username);
 const { value: password } = useField("password", loginSchema.password);
+const { value: rememberMe } = useField("rememberMe", loginSchema.rememberMe);
 
 const submitChange = handleSubmit(async (values: LoginForm) => {
-  authStore.login(values);
+  await authStore.login(values);
+});
+
+setTest();
+
+console.log("cookie...");
+console.log(getTest());
+
+const test = ref(getTest() ?? "");
+const test2 = ref("");
+onMounted(() => {
+  setTestLocalStorage();
+  console.log("local storage...");
+  console.log(getTestLocalStorage());
+
+  test2.value = getTestLocalStorage() ?? "";
 });
 </script>

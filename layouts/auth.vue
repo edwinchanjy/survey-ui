@@ -5,3 +5,10 @@
     </div>
   </div>
 </template>
+
+<script lang="ts" setup>
+useSeoMeta({
+  title: "Toyota Evaluation System | Login",
+  ogTitle: "Toyota Evaluation System | Login",
+});
+</script>

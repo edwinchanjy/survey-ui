@@ -1,7 +1,7 @@
 {
   "title": "Toyota Evaluation System",
   "auth": {
-    "email": "Email",
+    "username": "Username",
     "password": "Password",
     "rememberMe": "Remember me",
     "forgotPassword": "Forgot Password?",
@@ -11,11 +11,20 @@
       "text2": "Sign up here"
     }
   },
+  "confirmLogout": {
+    "title": "Confirm logout",
+    "body": "Are you sure you would like to logout? Any unsubmitted survey data will be cleared and you'll need to log in again.",
+    "confirmText": "Logout",
+    "cancelText": "Cancel"
+  },
   "errors": {
-    "emailRequired": "Please enter email address",
-    "emailInvalid": "Invalid email",
+    "usernameRequired": "Please enter username",
     "passwordRequired": "Please enter password",
-    "passwordMinLength": "Please enter at least 6 characters"
+    "passwordMinLength": "Please enter at least 6 characters",
+    "uploadFailed": "Upload Failed"
+  },
+  "survey": {
+    "dataSaved": "Your input has been saved."
   },
   "save": "Save",
   "clear": "Clear"
