@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="bg-[url('/assets/images/background-image.jpg')]">
+    <div class="bg-[url('/assets/images/background-image-2.jpg')]">
       <slot />
     </div>
   </div>
@@ -8,7 +8,7 @@
 
 <script lang="ts" setup>
 useSeoMeta({
-  title: "Toyota Evaluation System | Login",
-  ogTitle: "Toyota Evaluation System | Login",
+  title: "UMW Toyota Motor - Outlet Evaluation System | Login",
+  ogTitle: "UMW Toyota Motor - Outlet Evaluation System | Login",
 });
 </script>

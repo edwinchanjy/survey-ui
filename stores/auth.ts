@@ -7,6 +7,8 @@ import {
   UserLoginResponse,
 } from "data/interfaces/auth";
 import { auth } from "~~/repositories";
+import { Platform } from "~~/data/enum";
+import Swal from "sweetalert2";
 
 export const useAuthStore = defineStore("auth", () => {
   const localePath = useLocalePath();
@@ -24,10 +26,17 @@ export const useAuthStore = defineStore("auth", () => {
       request: {
         username: loginInfo.username,
         password: passwordHash,
+        platform: Platform.UserWeb,
       },
     };
 
     const data = await auth.login(request);
+
+    if (data.data.message) {
+      Swal.fire("Error", data.data.message, "error");
+
+      return;
+    }
 
     if (data) {
       userData.value = data;
@@ -51,7 +60,8 @@ export const useAuthStore = defineStore("auth", () => {
     userData.value = null;
 
     removeUserToken();
-    removeSurvey();
+    //TODO: not sure to remove or not first
+    // removeSurvey();
 
     navigateTo(localePath("/login"));
   }
@@ -65,7 +75,7 @@ export const useAuthStore = defineStore("auth", () => {
 
     if (data) {
       isLoggedIn.value = true;
-      userName.value = data.data.Username;
+      userName.value = data.data.username;
     }
   }
 

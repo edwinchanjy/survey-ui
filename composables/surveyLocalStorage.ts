@@ -33,15 +33,3 @@ export const setSurvey = (value: string) => {
 export const removeSurvey = () => {
   localStorage.removeItem(cookiesKey.surveyKey);
 };
-
-export const getTestLocalStorage = (): string | null | undefined => {
-  const data = localStorage.getItem("test");
-
-  return data;
-};
-
-export const setTestLocalStorage = () => {
-  const data = "LMAO";
-
-  localStorage.setItem("test", data);
-};

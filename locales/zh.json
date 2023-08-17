@@ -1,5 +1,5 @@
 {
-  "title": "丰田评价系统",
+  "title": "门店评价系统",
   "auth": {
     "username": "用户名",
     "password": "密码",
@@ -13,19 +13,49 @@
   },
   "confirmLogout": {
     "title": "确认登出",
-    "body": "您确定要登出吗？ 任何未提交的调查数据都将被清除，并且需要重新登录。",
+    "body": "您确定要登出吗？",
     "confirmText": "登出",
     "cancelText": "取消"
+  },
+  "outlet": {
+    "outletName": "店铺名称",
+    "location": "地点",
+    "outletType": "店铺类型",
+    "buildingType": "建筑类型",
+    "evaluatorName": "评估者姓名",
+    "dateOfEvaluation": "评估日期",
+    "dealerPrincipalName": "经销商负责人姓名"
+  },
+  "placeholder": {
+    "outlet": {
+      "outletName": "店铺名称",
+      "location": "地点",
+      "outletType": "选择店铺类型",
+      "buildingType": "选择建筑类型",
+      "evaluatorName": "评估者姓名",
+      "dateOfEvaluation": "选择评估日期",
+      "dealerPrincipalName": "经销商负责人姓名"
+    }
   },
   "errors": {
     "usernameRequired": "请输入用户名",
     "passwordRequired": "请输入密码",
     "passwordMinLength": "请输入至少6个字符",
-    "uploadFailed": "上传失败"
+    "uploadFailed": "上传失败",
+    "outlet": {
+      "outletName": "请输入店铺名称",
+      "location": "请输入地点",
+      "outletType": "请选择店铺类型",
+      "buildingType": "请选择建筑类型",
+      "evaluatorName": "请输入评估者姓名",
+      "dateOfEvaluation": "请选择评估日期",
+      "dealerPrincipalName": "请输入经销商负责人姓名"
+    }
   },
   "survey": {
     "dataSaved": "您的输入已保存。"
   },
   "save": "保存",
-  "clear": "清除"
+  "clear": "清除",
+  "logout": "登出"
 }

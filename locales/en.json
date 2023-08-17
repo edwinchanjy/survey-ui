@@ -1,5 +1,5 @@
 {
-  "title": "Toyota Evaluation System",
+  "title": "Outlet Evaluation System",
   "auth": {
     "username": "Username",
     "password": "Password",
@@ -13,19 +13,49 @@
   },
   "confirmLogout": {
     "title": "Confirm logout",
-    "body": "Are you sure you would like to logout? Any unsubmitted survey data will be cleared and you'll need to log in again.",
+    "body": "Are you sure you would like to logout?",
     "confirmText": "Logout",
     "cancelText": "Cancel"
+  },
+  "outlet": {
+    "outletName": "Outlet Name",
+    "location": "Location",
+    "outletType": "Outlet Type",
+    "buildingType": "Building Type",
+    "evaluatorName": "Evaluator Name",
+    "dateOfEvaluation": "Date of Evaluation",
+    "dealerPrincipalName": "Dealer Principal's Name"
+  },
+  "placeholder": {
+    "outlet": {
+      "outletName": "Outlet Name",
+      "location": "Location",
+      "outletType": "Select Outlet Type",
+      "buildingType": "Select Building Type",
+      "evaluatorName": "Evaluator Name",
+      "dateOfEvaluation": "Select Date of Evaluation",
+      "dealerPrincipalName": "Dealer Principal's Name"
+    }
   },
   "errors": {
     "usernameRequired": "Please enter username",
     "passwordRequired": "Please enter password",
     "passwordMinLength": "Please enter at least 6 characters",
-    "uploadFailed": "Upload Failed"
+    "uploadFailed": "Upload Failed",
+    "outlet": {
+      "outletName": "Please Enter Outlet Name",
+      "location": "Please Enter Location",
+      "outletType": "Please Select Outlet Type",
+      "buildingType": "Please Select Building Type",
+      "evaluatorName": "Please Enter Evaluator Name",
+      "dateOfEvaluation": "Please Select Date of Evaluation",
+      "dealerPrincipalName": "Please Enter Dealer Principal's Name"
+    }
   },
   "survey": {
     "dataSaved": "Your input has been saved."
   },
   "save": "Save",
-  "clear": "Clear"
+  "clear": "Clear",
+  "logout": "Logout"
 }

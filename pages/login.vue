@@ -1,34 +1,36 @@
 <template>
   <div class="flex justify-center items-center h-screen">
     <div
-      class="w-full max-w-sm p-4 bg-gray-800 border border-gray-700 rounded-lg shadow sm:p-6 md:p-8"
+      class="w-full max-w-sm p-4 bg-white bg-opacity-60 rounded-lg sm:p-6 md:p-8"
     >
+      <img
+        class="px-8"
+        src="~~/assets/images/toyota-logo.png"
+        alt="Toyota Logo"
+      />
+      <hr class="mt-6 mb-4 h-0.5 border-t-0 bg-slate-800" />
       <form class="space-y-6" @submit.prevent="submitChange">
-        <h5 class="text-xl font-medium text-white text-center">
+        <h5 class="text-xl font-medium text-center">
           {{ t("title") }}
         </h5>
         <div>
-          <label
-            for="username"
-            class="block mb-2 text-sm font-medium text-white"
-            >{{ t("auth.username") }}</label
-          >
+          <label for="username" class="block mb-2 text-sm font-medium">{{
+            t("auth.username")
+          }}</label>
           <input
             id="username"
             v-model="username"
             type="text"
             name="text"
-            class="bg-gray-600 border border-gray-500 text-white placeholder-gray-400 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+            class="bg-sky-200 border border-sky-300 outline-none placeholder-gray-400 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
             placeholder="Username"
             required
           />
         </div>
         <div>
-          <label
-            for="password"
-            class="block mb-2 text-sm font-medium text-white"
-            >{{ t("auth.password") }}</label
-          >
+          <label for="password" class="block mb-2 text-sm font-medium">{{
+            t("auth.password")
+          }}</label>
           <input
             id="password"
             v-model="password"
@@ -36,7 +38,7 @@
             name="password"
             placeholder="••••••••"
             autocomplete="on"
-            class="bg-gray-600 border border-gray-500 placeholder-gray-400 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+            class="bg-sky-200 border border-sky-300 outline-none placeholder-gray-400 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
             required
           />
         </div>
@@ -47,26 +49,22 @@
                 id="rememberMe"
                 v-model="rememberMe"
                 type="checkbox"
-                class="w-4 h-4 accent-primary border border-gray-600 rounded bg-gray-700 focus:ring-3 focus:ring-primary ring-offset-gray-800 ocus:ring-offset-gray-800"
+                class="w-4 h-4 accent-sky-400 border border-gray-600 rounded bg-gray-700 focus:ring-3 focus:ring-blue-500 ring-offset-gray-800 focus:ring-offset-gray-800"
               />
             </div>
-            <label
-              for="rememberMe"
-              class="ml-2 text-sm font-medium text-gray-300"
-              >{{ t("auth.rememberMe") }}</label
-            >
+            <label for="rememberMe" class="ml-2 text-sm font-medium">{{
+              t("auth.rememberMe")
+            }}</label>
           </div>
         </div>
         <div class="flex justify-center">
           <button
             type="submit"
-            class="w-full text-white bg-primary hover:bg-primary-700 focus:ring-2 focus:outline-none focus:ring-red-600 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+            class="w-full text-white bg-sky-400 hover:bg-sky-700 focus:ring-2 focus:outline-none focus:ring-sky-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
           >
             {{ t("auth.signIn") }}
           </button>
         </div>
-        <p>{{ test }}</p>
-        <p>{{ test2 }}</p>
       </form>
     </div>
   </div>
@@ -122,20 +120,5 @@ const { value: rememberMe } = useField("rememberMe", loginSchema.rememberMe);
 
 const submitChange = handleSubmit(async (values: LoginForm) => {
   await authStore.login(values);
-});
-
-setTest();
-
-console.log("cookie...");
-console.log(getTest());
-
-const test = ref(getTest() ?? "");
-const test2 = ref("");
-onMounted(() => {
-  setTestLocalStorage();
-  console.log("local storage...");
-  console.log(getTestLocalStorage());
-
-  test2.value = getTestLocalStorage() ?? "";
 });
 </script>

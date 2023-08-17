@@ -27,9 +27,3 @@ export const setUserToken = (value: string) => {
 export const removeUserToken = () => {
   useCookie(cookiesKey.userTokenKey).value = null;
 };
-
-export const getTest = (): string | null | undefined => useCookie("test").value;
-
-export const setTest = () => {
-  useCookie("test").value = "LMAO";
-};

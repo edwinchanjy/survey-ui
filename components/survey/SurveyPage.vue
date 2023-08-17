@@ -33,7 +33,7 @@ onMounted(() => {
 
   function saveSurveyData(survey: any) {
     const data = survey.data;
-    data.pageNo = survey.currentPageNo + 1;
+    data.pageNo = survey.currentPageNo;
 
     setSurvey(JSON.stringify(data));
   }

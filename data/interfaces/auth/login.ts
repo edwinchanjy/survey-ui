@@ -1,3 +1,5 @@
+import { Platform } from "~~/data/enum";
+
 export interface LoginForm {
   username: string;
   password: string;
@@ -9,6 +11,7 @@ export interface UserLoginRequest {
   request: {
     username: string;
     password: string;
+    platform: Platform;
   };
 }
 
@@ -18,11 +21,13 @@ export interface UserLoginResponse {
   data: {
     id: string;
     username: string;
+    name: string;
     role: string;
     isReset: boolean;
     isActive: boolean;
     token: string;
     accessModule: Array<string>;
+    message?: string;
   };
 }
 
@@ -34,12 +39,13 @@ export interface GetUserResponse {
   timestamp: string;
   uniqueId: string;
   data: {
-    Id: string;
-    Username: string;
-    Password: string;
-    IsReset: boolean;
-    IsActive: boolean;
-    LastLoginDt: string;
-    Role: string;
+    id: string;
+    username: string;
+    name: string;
+    password: string;
+    isReset: boolean;
+    isActive: boolean;
+    lastLoginDt: string;
+    role: string;
   };
 }

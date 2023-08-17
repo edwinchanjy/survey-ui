@@ -10,7 +10,7 @@
 const { t } = useI18n();
 
 useSeoMeta({
-  title: t("title"),
-  ogTitle: t("title"),
+  title: "UMW Toyota Motor - Outlet Evaluation System",
+  ogTitle: "UMW Toyota Motor - Outlet Evaluation System",
 });
 </script>

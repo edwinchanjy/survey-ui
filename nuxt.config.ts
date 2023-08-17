@@ -10,6 +10,7 @@ export default defineNuxtConfig({
     "@tailvue/nuxt",
     "nuxt-icon",
     "dayjs-nuxt",
+    "@element-plus/nuxt",
   ],
   i18n: {
     locales: [
